@@ -4,25 +4,27 @@ services:
   app:
     build:
       context: ./
-      dockerfile: app.dockerfile
+      dockerfile: docker/app.dockerfile
     volumes:
       - ./:/project
     working_dir: /project
     ports:
-      - "8000:8000"
+      - 8000:8000
     environment:
-        - "DB_PORT=3306"
-        - "DB_HOST=database"
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
 
   web:
     build:
       context: ./
-      dockerfile: web.dockerfile
+      dockerfile: docker/web.dockerfile
     working_dir: /project
     volumes_from:
       - app
     ports:
       - 8080:80
+    depends_on:
+      - app
 
   database:
     image: mysql:5.6
