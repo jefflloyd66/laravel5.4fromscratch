@@ -3,11 +3,7 @@
 <head>
     <title></title>
 </head>
-<ul>
-    @foreach ($tasks as $task)
-        <li>{{ $task }}</li>
-    @endforeach
-</ul>
 <body>
+<h1>Tasks</h1>
 </body>
 </html>

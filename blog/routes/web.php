@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +16,20 @@
 
 Route::get('/', function () {
 
-    $tasks = ['go to the store', 'finish the cast', 'clean the house'];
-
-    return view('welcome', compact('tasks'));
+    return view('welcome');
 });
 
-Route::get('/about', function() {
-    return view('about');
+Route::get('/tasks', function () {
+
+    $tasks = DB::table('tasks')->get();
+
+    return view('tasks.index', compact('tasks'));
+});
+
+Route::get('/tasks/{id}', function ($id) {
+
+    $task = DB::table('tasks')->find($id);
+    dd($task);
+
+    return view('tasks.show', compact('task'));
 });
