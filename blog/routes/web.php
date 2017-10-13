@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
+use App\Task;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,15 +21,13 @@ Route::get('/', function () {
 
 Route::get('/tasks', function () {
 
-    $tasks = DB::table('tasks')->get();
+    $tasks = Task::incomplete();
 
     return view('tasks.index', compact('tasks'));
 });
 
 Route::get('/tasks/{id}', function ($id) {
 
-    $task = DB::table('tasks')->find($id);
-    dd($task);
-
+    $task = Task::find($id);
     return view('tasks.show', compact('task'));
 });
