@@ -12,7 +12,11 @@ class CommentsController extends Controller
     {
         $this->validate(request(), ['body' => 'required|min:2']);
 
-        $post->addComment(request('body'));
+        $post->addComment([
+            'body' => request('body'),
+            'user_id' => auth()->user()->id,
+            'post_id' => $post->id
+        ]);
 
         return back();
     }
