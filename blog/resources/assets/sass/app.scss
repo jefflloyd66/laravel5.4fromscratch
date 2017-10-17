@@ -165,3 +165,19 @@ h6, .h6 {
   margin-bottom: 0;
 }
 
+#flash-message {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  animation-name: flash-message;
+  animation-delay: 2s;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes flash-message {
+  0%   {opacity: 1;}
+  100% { opacity: 0; display: none; }
+}
