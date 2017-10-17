@@ -17,5 +17,6 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+        $response->assertSee('<h1 class="blog-title">The Bootstrap Blog</h1>');
     }
 }
