@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Repositories\Posts;
 
 class PostsController extends Controller
 {
@@ -17,8 +18,6 @@ class PostsController extends Controller
         $posts = Post::latest()
             ->filter(request(['month', 'year']))
             ->get();
-
-        // temporary
 
         $archives = Post::archives();
 
