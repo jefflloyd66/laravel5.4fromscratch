@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Repositories\Posts;
@@ -13,7 +14,7 @@ class PostsController extends Controller
         //$this->middleware('Auth')->except(['index', 'show']);
     }
 
-    public function index()
+    public function index(Tag $tag = null)
     {
         $message = session('message');
         $posts = Post::latest()
